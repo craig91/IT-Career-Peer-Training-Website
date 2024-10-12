@@ -26,9 +26,15 @@ jobs:
     # - name: Run build
     #   run: npm run build
 
-    - name: Deploy to server
+    - name: Set up SSH
       run: |
-        scp -r ./ cdejean@192.168.1.213:/var/www/html
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H 192.168.1.213 >> ~/.ssh/known_hosts
+    # - name: Deploy to server
+    #   run: |
+    #     scp -r ./ cdejean@192.168.1.213:/var/www/html
+    #   env:
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
