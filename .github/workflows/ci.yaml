@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+
+on:
+  push:
+    branches:
+      - master 
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build
+
+      - name: Deploy to server
+        run: |
+
+      
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} #ADD ssh key for server access. 
+
