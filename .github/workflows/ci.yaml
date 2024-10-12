@@ -26,13 +26,13 @@ jobs:
     # - name: Run build
     #   run: npm run build
 
-    - name: Set up SSH
-      run: |
-        mkdir -p ~/.ssh
-        if [ ! -f ~/.ssh/id_rsa ]; then echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa; fi
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H 192.168.1.213 >> ~/.ssh/known_hosts
-      shell: bash
+    # - name: Set up SSH
+    #   run: |
+    #     mkdir -p ~/.ssh
+    #     if [ ! -f ~/.ssh/id_rsa ]; then echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa; fi
+    #     chmod 600 ~/.ssh/id_rsa
+    #     ssh-keyscan -H 192.168.1.213 >> ~/.ssh/known_hosts
+    #   shell: bash
 
     - name: Deploy to server
       run: |
