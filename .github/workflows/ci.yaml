@@ -29,7 +29,7 @@ jobs:
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        if [ ! -f ~/.ssh/id_rsa ]; then echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa; fi
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H 192.168.1.213 >> ~/.ssh/known_hosts
     # - name: Deploy to server
