@@ -5,4 +5,4 @@ buger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-console.log("I am working!")
+console.log("I am working with discord")
