@@ -33,10 +33,20 @@ jobs:
     #     chmod 600 ~/.ssh/id_rsa
     #     ssh-keyscan -H 192.168.1.213 >> ~/.ssh/known_hosts
     #   shell: bash
+    - name: Add SSH Key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+
+    - name: Add server to known hosts
+      run: |
+        ssh-keyscan -H 72.89.93.117 >> ~/.ssh/known_hosts
+
 
     - name: Deploy to server
       run: |
         sudo scp -r ./ cdejean@72.89.93.117:/var/www/html
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      # env:
+      #   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
