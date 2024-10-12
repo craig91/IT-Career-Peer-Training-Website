@@ -36,7 +36,7 @@ jobs:
 
     - name: Deploy to server
       run: |
-        scp -r ./ cdejean@192.168.1.213:/var/www/html
+        sudo scp -r ./ cdejean@72.89.93.117:/var/www/html
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
