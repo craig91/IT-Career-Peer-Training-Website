@@ -1,6 +1,6 @@
-const buger = document.querySelector('.burger');
+const burger = document.querySelector('.burger');
 const navLinks = document.querySelector('.nav-links');
 
-buger.addEventListener('click', () => {
+burger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
